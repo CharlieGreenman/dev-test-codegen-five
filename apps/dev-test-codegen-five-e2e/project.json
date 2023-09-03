@@ -1,0 +1,29 @@
+{
+  "name": "dev-test-codegen-five-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/dev-test-codegen-five-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/dev-test-codegen-five-e2e/cypress.json",
+        "devServerTarget": "dev-test-codegen-five:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "dev-test-codegen-five:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/dev-test-codegen-five-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["dev-test-codegen-five"]
+}
